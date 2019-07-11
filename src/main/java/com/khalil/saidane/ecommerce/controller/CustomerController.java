@@ -1,6 +1,6 @@
 package com.khalil.saidane.ecommerce.controller;
 
-import com.khalil.saidane.ecommerce.exeption.CustomerNotFoudException;
+import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import com.khalil.saidane.ecommerce.service.CustomerService;
 import com.khalil.saidane.ecommerce.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,24 +16,24 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping("")
+    @PostMapping
     public Customer create(@RequestBody Customer customer) {
         return customerService.signUp(customer);
     }
 
     @PutMapping("/{id}")
-    public Customer update(@RequestBody Customer customer, @PathVariable Long id) throws CustomerNotFoudException {
+    public Customer update(@RequestBody Customer customer, @PathVariable Long id) throws ObjectNotFoundException {
         return customerService.update(id, customer);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) throws CustomerNotFoudException {
+    public void delete(@PathVariable Long id) throws ObjectNotFoundException {
         customerService.delete(id);
     }
 
     @GetMapping("/{id}")
-    public Customer get(@PathVariable Long id) throws CustomerNotFoudException {
-        return customerService.findById(id);
+    public Customer get(@PathVariable Long id) throws ObjectNotFoundException {
+        return customerService.read(id);
     }
 
 }

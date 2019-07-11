@@ -2,7 +2,7 @@ package com.khalil.saidane.ecommerce.service;
 
 import com.khalil.saidane.ecommerce.DAO.CustomerRepository;
 import com.khalil.saidane.ecommerce.entities.Customer;
-import com.khalil.saidane.ecommerce.exeption.CustomerNotFoudException;
+import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,16 +16,16 @@ public class CustomerService {
     public Customer signUp(Customer customer){
         return repo.save(customer);
     }
-    public Customer update(Long customerId,Customer newCustomer) throws CustomerNotFoudException {
-        Customer customer = findById(customerId);
-        newCustomer.setId(customerId);
+    public Customer update(Long id,Customer newCustomer) throws ObjectNotFoundException {
+        Customer customer = read(id);
+        newCustomer.setId(id);
         return repo.save(newCustomer);
     }
-    public Customer findById(Long id) throws CustomerNotFoudException {
-        return repo.findById(id).orElseThrow(()->new CustomerNotFoudException(id));
+    public Customer read(Long id) throws ObjectNotFoundException {
+        return repo.findById(id).orElseThrow(()->new ObjectNotFoundException(id));
     }
-    public void delete(Long id) throws CustomerNotFoudException {
-        Customer customer = findById(id);
+    public void delete(Long id) throws ObjectNotFoundException {
+        Customer customer = read(id);
          repo.delete(customer);
     }
 
