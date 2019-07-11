@@ -4,12 +4,13 @@ package com.khalil.saidane.ecommerce.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
-public class Customer {
+public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,6 +38,6 @@ public class Customer {
     private String shippingPostalCode;
     private String shippingCountry;
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+    private List<Order_> orders;
 
 }

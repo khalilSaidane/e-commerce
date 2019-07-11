@@ -3,9 +3,8 @@ package com.khalil.saidane.ecommerce.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-
-@Entity
 @Data
+@Entity
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

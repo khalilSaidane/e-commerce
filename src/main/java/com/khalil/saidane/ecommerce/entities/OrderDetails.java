@@ -6,15 +6,16 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-//@Entity
+@Entity
 @Data
 public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Product product;
+    @OneToMany(mappedBy = "orderDetails")
+    private List<Product> products;
     @OneToOne
-    private Order order;
+    private Order_ order_;
     private float price;
     private int quantity;
     private float discount;

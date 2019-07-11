@@ -13,5 +13,5 @@ public class Payment {
      private String paymentType ;
      private int isAllowed;
      @OneToOne
-     private Order order;
+     private Order_ order_;
 }

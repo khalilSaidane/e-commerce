@@ -13,8 +13,6 @@ public class Product {
     private Long id;
     private String name;
     private String description;
-    @OneToOne
-    private Supplier supplier;
     @OneToMany(mappedBy = "product")
     private List<Category> categories;
     private int quantityPerUnit;
@@ -27,6 +25,10 @@ public class Product {
     private float unitWeight;
     private int unitsInStock;
     private int unitOnOrder;
+    @ManyToOne
+    private OrderDetails orderDetails;
+    @ManyToOne
+    private Supplier supplier;
 
 
 

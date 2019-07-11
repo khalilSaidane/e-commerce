@@ -26,4 +26,5 @@ public class Supplier {
     private List<Product> products;
 
 
+
 }
