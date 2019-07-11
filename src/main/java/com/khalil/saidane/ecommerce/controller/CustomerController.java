@@ -1,9 +1,9 @@
 package com.khalil.saidane.ecommerce.controller;
 
-import com.khalil.saidane.ecommerce.CustomerService;
+import com.khalil.saidane.ecommerce.exeption.CustomerNotFoudException;
+import com.khalil.saidane.ecommerce.service.CustomerService;
 import com.khalil.saidane.ecommerce.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,12 +17,23 @@ public class CustomerController {
     }
 
     @PostMapping("")
-    public Customer signUp(@RequestBody Customer customer){
-       return customerService.signUp(customer);
+    public Customer create(@RequestBody Customer customer) {
+        return customerService.signUp(customer);
     }
-    @GetMapping("/test")
-    public String test(){
-        return "success";
+
+    @PutMapping("/{id}")
+    public Customer update(@RequestBody Customer customer, @PathVariable Long id) throws CustomerNotFoudException {
+        return customerService.update(id, customer);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) throws CustomerNotFoudException {
+        customerService.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public Customer get(@PathVariable Long id) throws CustomerNotFoudException {
+        return customerService.findById(id);
     }
 
 }
