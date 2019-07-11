@@ -22,7 +22,7 @@ public class Customer implements Serializable {
     private String zipCode;
     private String country;
     private int phone;
-    private String Email;
+    private String email;
     private String password;
     private String creditCard;
     private String creditCardTypeID;
