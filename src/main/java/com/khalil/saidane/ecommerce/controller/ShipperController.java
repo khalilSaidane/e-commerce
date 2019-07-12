@@ -1,5 +1,6 @@
 package com.khalil.saidane.ecommerce.controller;
 
+import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import com.khalil.saidane.ecommerce.service.ShipperService;
@@ -34,6 +35,12 @@ public class ShipperController {
     public Shipper update(@PathVariable Long id,@RequestBody Shipper newShipper ) throws ObjectNotFoundException {
         return shipperService.update(id,newShipper);
     }
+
+    @PostMapping("{shipper_id}/{order_id}")
+    public Shipper affectOrderToShipper(@PathVariable Long shipper_id,@PathVariable Long order_id) throws ObjectNotFoundException {
+        return shipperService.affectOrderToShipper(shipper_id,order_id);
+    }
+
 
 
 

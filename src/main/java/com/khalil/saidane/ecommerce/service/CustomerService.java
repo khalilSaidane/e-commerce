@@ -5,6 +5,8 @@ import com.khalil.saidane.ecommerce.entities.Customer;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     private final CustomerRepository repo;
@@ -27,6 +29,10 @@ public class CustomerService {
     public void delete(Long id) throws ObjectNotFoundException {
         Customer customer = read(id);
          repo.delete(customer);
+    }
+
+    public List<Customer> readAll(){
+        return repo.findAll();
     }
 
 

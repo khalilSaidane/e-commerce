@@ -1,10 +1,14 @@
 package com.khalil.saidane.ecommerce.controller;
 
+import com.khalil.saidane.ecommerce.entities.Customer;
 import com.khalil.saidane.ecommerce.entities.Order_;
+import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import com.khalil.saidane.ecommerce.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+
 
 @RestController
 @RequestMapping("order-management")
@@ -24,7 +28,9 @@ public class OrderController {
 
     @PostMapping
     public Order_ create(@RequestBody Order_ order_) {
-        return orderService.create(order_);
+
+       return orderService.create(order_);
+
     }
 
     @PutMapping("{id}")
@@ -36,4 +42,5 @@ public class OrderController {
     public void delete(@PathVariable Long id) throws ObjectNotFoundException {
         orderService.delete(id);
     }
+
 }

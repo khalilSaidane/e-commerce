@@ -2,6 +2,7 @@ package com.khalil.saidane.ecommerce.service;
 
 import com.khalil.saidane.ecommerce.DAO.OrderRepository;
 import com.khalil.saidane.ecommerce.entities.Order_;
+import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 

@@ -6,6 +6,8 @@ import com.khalil.saidane.ecommerce.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("customer-management")
 public class CustomerController {
@@ -34,6 +36,11 @@ public class CustomerController {
     @GetMapping("/{id}")
     public Customer get(@PathVariable Long id) throws ObjectNotFoundException {
         return customerService.read(id);
+    }
+
+    @GetMapping("")
+    public List<Customer> readAll() {
+        return customerService.readAll();
     }
 
 }
