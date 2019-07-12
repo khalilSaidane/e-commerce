@@ -12,11 +12,8 @@ import java.util.List;
 @RequestMapping("shipper-management")
 public class ShipperController {
 
-    private final ShipperService shipperService;
+    private  ShipperService shipperService;
 
-    public ShipperController(ShipperService shipperService) {
-        this.shipperService = shipperService;
-    }
 
     @PostMapping
     public Shipper create(@RequestBody Shipper shipper) {

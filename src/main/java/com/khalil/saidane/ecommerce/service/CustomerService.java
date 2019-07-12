@@ -4,6 +4,7 @@ import com.khalil.saidane.ecommerce.DAO.CustomerRepository;
 import com.khalil.saidane.ecommerce.entities.Customer;
 import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -11,14 +12,12 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-    private final CustomerRepository repo;
+    @Autowired
+    private  CustomerRepository repo;
 
 
 
-    public CustomerService(CustomerRepository customerRepository) {
-        this.repo = customerRepository;
 
-    }
 
     public Customer signUp(Customer customer) {
         return repo.save(customer);

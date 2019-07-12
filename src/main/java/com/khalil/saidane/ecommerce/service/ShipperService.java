@@ -4,20 +4,18 @@ import com.khalil.saidane.ecommerce.DAO.ShipperRepository;
 import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ShipperService {
+    @Autowired
+    private  ShipperRepository repo;
+    @Autowired
+    private  OrderService orderService;
 
-    private final ShipperRepository repo;
-    private final OrderService orderService;
-
-    public ShipperService(ShipperRepository repo, OrderService orderService) {
-        this.repo = repo;
-        this.orderService = orderService;
-    }
 
     public Shipper read(Long id) throws ObjectNotFoundException {
         return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Shipper.class.getName(),id));

@@ -4,18 +4,19 @@ import com.khalil.saidane.ecommerce.DAO.CategoryRepository;
 import com.khalil.saidane.ecommerce.entities.Category;
 import com.khalil.saidane.ecommerce.entities.Product;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CategoryService {
+    @Autowired
+    private  CategoryRepository repo;
+    @Autowired
+    private  ProductService productService;
 
-    private final CategoryRepository repo;
-    private final ProductService productService;
 
-    public CategoryService(CategoryRepository repo, ProductService productService) {
-        this.repo = repo;
-        this.productService = productService;
-    }
 
     public Category read(Long id) throws ObjectNotFoundException {
         return repo.findById(id).orElseThrow(()-> new ObjectNotFoundException(Category.class.getName(),id));
@@ -42,5 +43,9 @@ public class CategoryService {
         Product product = productService.read(product_id);
         category.setProduct(product);
         return repo.save(category);
+    }
+
+    public List<Category> readAll() {
+        return repo.findAll();
     }
 }

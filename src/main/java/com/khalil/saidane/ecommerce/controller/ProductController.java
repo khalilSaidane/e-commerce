@@ -12,11 +12,8 @@ import java.util.List;
 @RequestMapping("product-management")
 public class ProductController {
     @Autowired
-    private final ProductService productService;
+    private  ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
 
     @PostMapping
     public Product create(@RequestBody Product product){

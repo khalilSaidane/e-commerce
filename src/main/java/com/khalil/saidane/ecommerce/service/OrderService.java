@@ -5,19 +5,19 @@ import com.khalil.saidane.ecommerce.entities.Customer;
 import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class OrderService {
-    private final OrderRepository repo;
-    private final CustomerService customerService;
+    @Autowired
+    private  OrderRepository repo;
+    @Autowired
+    private  CustomerService customerService;
 
-    public OrderService(OrderRepository repo,CustomerService customerService) {
-        this.repo = repo;
-        this.customerService = customerService;
-    }
+
 
     public Order_ read(Long id) throws ObjectNotFoundException {
         return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Order_.class.getName(),id));

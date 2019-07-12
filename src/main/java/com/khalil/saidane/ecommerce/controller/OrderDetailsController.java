@@ -12,11 +12,9 @@ import java.util.List;
 @RequestMapping("order-details-management")
 public class OrderDetailsController {
     @Autowired
-    private final OrderDetailsService orderDetailsService;
+    private  OrderDetailsService orderDetailsService;
 
-    public OrderDetailsController(OrderDetailsService orderDetailsService) {
-        this.orderDetailsService = orderDetailsService;
-    }
+
 
     @GetMapping("{id}")
     public OrderDetails read(@PathVariable Long id) throws ObjectNotFoundException {

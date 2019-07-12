@@ -3,6 +3,7 @@ package com.khalil.saidane.ecommerce.service;
 import com.khalil.saidane.ecommerce.DAO.ProductRepository;
 import com.khalil.saidane.ecommerce.entities.Product;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,13 +11,10 @@ import java.util.List;
 
 @Service
 public class ProductService {
+    @Autowired
+    private  ProductRepository repo;
 
-    private final ProductRepository repo;
 
-
-    public ProductService(ProductRepository repo) {
-        this.repo = repo;
-    }
 
 
     public Product read(Long id) throws ObjectNotFoundException {

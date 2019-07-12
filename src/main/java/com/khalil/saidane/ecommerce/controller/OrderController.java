@@ -16,11 +16,8 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private final OrderService orderService;
+    private  OrderService orderService;
 
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
 
     @GetMapping("/{id}")
     public Order_ read(@PathVariable Long id) throws ObjectNotFoundException {
