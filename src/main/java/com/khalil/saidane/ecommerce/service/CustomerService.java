@@ -24,12 +24,12 @@ public class CustomerService {
         return repo.save(customer);
     }
 
-    public Customer update(Long id, Customer newCustomer)  {
+    public Customer update(Long id, Customer updatedCustomer)  {
        return repo.findById(id).map(customer -> {
-           newCustomer.setId(id);
-           return repo.save(newCustomer);
+           updatedCustomer.setId(id);
+           return repo.save(updatedCustomer);
        }).orElse(
-               repo.save(newCustomer)
+               repo.save(updatedCustomer)
        );
     }
 

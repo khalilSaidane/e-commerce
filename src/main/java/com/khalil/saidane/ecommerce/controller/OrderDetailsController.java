@@ -29,8 +29,8 @@ public class OrderDetailsController {
     }
 
     @PutMapping("/{id}")
-    public OrderDetails update(@PathVariable Long id, @RequestBody OrderDetails orderDetails) throws ObjectNotFoundException {
-        return orderDetailsService.update(id, orderDetails);
+    public OrderDetails update(@PathVariable Long id, @RequestBody OrderDetails updatedDetails) throws ObjectNotFoundException {
+        return orderDetailsService.update(id, updatedDetails);
     }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable  Long id) throws ObjectNotFoundException {

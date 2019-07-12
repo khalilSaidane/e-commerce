@@ -35,8 +35,8 @@ public class OrderController {
     }
 
     @PutMapping("{id}")
-    public Order_ update(@PathVariable Long id, @RequestBody Order_ newOrder_) throws ObjectNotFoundException {
-        return orderService.update(id, newOrder_);
+    public Order_ update(@PathVariable Long id, @RequestBody Order_ updatedOrder_) throws ObjectNotFoundException {
+        return orderService.update(id, updatedOrder_);
     }
 
     @DeleteMapping("{id}")
@@ -44,7 +44,7 @@ public class OrderController {
         orderService.delete(id);
     }
     @GetMapping
-    public List<Order_>readAll(){return orderService.readAll();}
+    public List<Order_> readAll(){return orderService.readAll();}
 
     @PostMapping("customer/{customer_id}/order/{order_id}")
     public Order_ affectOrderToCustomer(@PathVariable Long customer_id, @PathVariable Long order_id) throws ObjectNotFoundException {

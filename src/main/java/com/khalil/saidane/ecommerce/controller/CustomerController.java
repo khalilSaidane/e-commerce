@@ -24,8 +24,8 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public Customer update(@RequestBody Customer customer, @PathVariable Long id) throws ObjectNotFoundException {
-        return customerService.update(id, customer);
+    public Customer update(@RequestBody Customer updatedCustomer, @PathVariable Long id) throws ObjectNotFoundException {
+        return customerService.update(id, updatedCustomer);
     }
 
     @DeleteMapping("/{id}")
@@ -34,11 +34,11 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer get(@PathVariable Long id) throws ObjectNotFoundException {
+    public Customer read(@PathVariable Long id) throws ObjectNotFoundException {
         return customerService.read(id);
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Customer> readAll() {
         return customerService.readAll();
     }

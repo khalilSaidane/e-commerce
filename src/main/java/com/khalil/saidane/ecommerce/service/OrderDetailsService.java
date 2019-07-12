@@ -23,12 +23,12 @@ public class OrderDetailsService {
         return repo.save(orderDetails);
     }
 
-    public OrderDetails update(Long id, OrderDetails newOrderDetails) {
+    public OrderDetails update(Long id, OrderDetails updatedOrderDetails) {
         return repo.findById(id).map(orderDetails -> {
-            newOrderDetails.setId(id);
-            return repo.save(newOrderDetails);
+            updatedOrderDetails.setId(id);
+            return repo.save(updatedOrderDetails);
         }).orElse(
-                repo.save(newOrderDetails)
+                repo.save(updatedOrderDetails)
         );
     }
 

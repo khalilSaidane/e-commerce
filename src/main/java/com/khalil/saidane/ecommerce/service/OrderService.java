@@ -27,12 +27,12 @@ public class OrderService {
         return repo.save(order_);
     }
 
-    public Order_ update(Long id, Order_ newOrder_) throws ObjectNotFoundException {
+    public Order_ update(Long id, Order_ updatedOrder_) throws ObjectNotFoundException {
         return repo.findById(id).map(order_ -> {
-            newOrder_.setId(id);
-            return repo.save(newOrder_);
+            updatedOrder_.setId(id);
+            return repo.save(updatedOrder_);
         }).orElse(
-                repo.save(newOrder_)
+                repo.save(updatedOrder_)
         );
     }
 

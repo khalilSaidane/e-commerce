@@ -2,6 +2,7 @@ package com.khalil.saidane.ecommerce.service;
 
 import com.khalil.saidane.ecommerce.DAO.CategoryRepository;
 import com.khalil.saidane.ecommerce.entities.Category;
+import com.khalil.saidane.ecommerce.entities.Product;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
 
     private final CategoryRepository repo;
+    private final ProductService productService;
 
-    public CategoryService(CategoryRepository repo) {
+    public CategoryService(CategoryRepository repo, ProductService productService) {
         this.repo = repo;
+        this.productService = productService;
     }
 
     public Category read(Long id) throws ObjectNotFoundException {
@@ -29,5 +32,15 @@ public class CategoryService {
         }).orElse(
                 repo.save(newCategory)
         );
+    }
+    public void delete (Long id) throws ObjectNotFoundException {
+        Category c = read(id);
+        repo.delete(c);
+    }
+    public Category affectCategoryToProduct(Long category_id,Long product_id) throws ObjectNotFoundException {
+        Category category = read(category_id);
+        Product product = productService.read(product_id);
+        category.setProduct(product);
+        return repo.save(category);
     }
 }
