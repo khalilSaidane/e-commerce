@@ -3,6 +3,7 @@ package com.khalil.saidane.ecommerce.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+
 @Data
 @Entity
 public class Category {
@@ -11,7 +12,7 @@ public class Category {
     private Long id;
     private String description;
     private String pictureUrl;
-    private  int isActive;
+    private int isActive;
     @ManyToOne
     private Product product;
 

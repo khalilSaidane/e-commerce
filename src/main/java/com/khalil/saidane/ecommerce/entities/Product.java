@@ -31,6 +31,4 @@ public class Product {
     private Supplier supplier;
 
 
-
-
 }

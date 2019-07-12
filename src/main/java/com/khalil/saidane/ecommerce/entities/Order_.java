@@ -16,7 +16,7 @@ public class Order_ {
     @ManyToOne
     private Customer customer;
     private int orderNumber;
-   @OneToOne(mappedBy = "order_")
+    @OneToOne(mappedBy = "order_")
     private Payment payment;
     private Date orderDate;
     private Date shipDate;

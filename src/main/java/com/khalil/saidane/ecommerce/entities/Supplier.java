@@ -13,7 +13,7 @@ public class Supplier {
     private Long id;
     private String name;
     private String contactName;
-    private  String city;
+    private String city;
     private String state;
     private String zipCode;
     private String country;
@@ -24,7 +24,6 @@ public class Supplier {
     private String typeGoods;
     @OneToMany(mappedBy = "supplier")
     private List<Product> products;
-
 
 
 }

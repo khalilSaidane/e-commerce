@@ -9,9 +9,9 @@ import javax.persistence.*;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
-     private String paymentType ;
-     private int isAllowed;
-     @OneToOne
-     private Order_ order_;
+    private Long id;
+    private String paymentType;
+    private int isAllowed;
+    @OneToOne
+    private Order_ order_;
 }

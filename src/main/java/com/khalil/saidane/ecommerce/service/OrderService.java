@@ -6,6 +6,8 @@ import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderService {
     private final OrderRepository repo;
@@ -15,22 +17,25 @@ public class OrderService {
     }
 
     public Order_ read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(()->new ObjectNotFoundException(id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
     }
 
-    public Order_ create(Order_ order_){
+    public Order_ create(Order_ order_) {
         return repo.save(order_);
     }
 
-    public Order_ update(Long id,Order_ newOrder_) throws ObjectNotFoundException {
+    public Order_ update(Long id, Order_ newOrder_) throws ObjectNotFoundException {
         Order_ order_ = read(id);
         newOrder_.setId(id);
         return repo.save(newOrder_);
     }
 
-    public  void delete(Long id) throws ObjectNotFoundException {
+    public void delete(Long id) throws ObjectNotFoundException {
         Order_ order_ = read(id);
         repo.delete(order_);
     }
 
+    public List<Order_> readAll() {
+        return repo.findAll();
+    }
 }

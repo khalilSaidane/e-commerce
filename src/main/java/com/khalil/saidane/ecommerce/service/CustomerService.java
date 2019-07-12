@@ -15,26 +15,29 @@ public class CustomerService {
     public CustomerService(CustomerRepository customerRepository) {
         this.repo = customerRepository;
     }
-    public Customer signUp(Customer customer){
+
+    public Customer signUp(Customer customer) {
         return repo.save(customer);
     }
-    public Customer update(Long id,Customer newCustomer) throws ObjectNotFoundException {
+
+    public Customer update(Long id, Customer newCustomer) throws ObjectNotFoundException {
         Customer customer = read(id);
         newCustomer.setId(id);
         return repo.save(newCustomer);
     }
+
     public Customer read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(()->new ObjectNotFoundException(id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
     }
+
     public void delete(Long id) throws ObjectNotFoundException {
         Customer customer = read(id);
-         repo.delete(customer);
+        repo.delete(customer);
     }
 
-    public List<Customer> readAll(){
+    public List<Customer> readAll() {
         return repo.findAll();
     }
-
 
 
 }

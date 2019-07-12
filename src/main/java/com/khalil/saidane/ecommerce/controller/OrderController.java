@@ -8,6 +8,7 @@ import com.khalil.saidane.ecommerce.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -29,7 +30,7 @@ public class OrderController {
     @PostMapping
     public Order_ create(@RequestBody Order_ order_) {
 
-       return orderService.create(order_);
+        return orderService.create(order_);
 
     }
 
@@ -42,5 +43,9 @@ public class OrderController {
     public void delete(@PathVariable Long id) throws ObjectNotFoundException {
         orderService.delete(id);
     }
+    @GetMapping
+    public List<Order_>readAll(){return orderService.readAll();}
+
+
 
 }

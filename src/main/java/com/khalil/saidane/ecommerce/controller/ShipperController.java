@@ -6,6 +6,8 @@ import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import com.khalil.saidane.ecommerce.service.ShipperService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("shipper-management")
 public class ShipperController {
@@ -17,7 +19,7 @@ public class ShipperController {
     }
 
     @PostMapping
-    public Shipper create(@RequestBody Shipper shipper){
+    public Shipper create(@RequestBody Shipper shipper) {
         return shipperService.create(shipper);
     }
 
@@ -32,16 +34,17 @@ public class ShipperController {
     }
 
     @PutMapping("{id}")
-    public Shipper update(@PathVariable Long id,@RequestBody Shipper newShipper ) throws ObjectNotFoundException {
-        return shipperService.update(id,newShipper);
+    public Shipper update(@PathVariable Long id, @RequestBody Shipper newShipper) throws ObjectNotFoundException {
+        return shipperService.update(id, newShipper);
     }
 
-    @PostMapping("{shipper_id}/{order_id}")
-    public Shipper affectOrderToShipper(@PathVariable Long shipper_id,@PathVariable Long order_id) throws ObjectNotFoundException {
-        return shipperService.affectOrderToShipper(shipper_id,order_id);
+    @PostMapping("shipper/{shipper_id}/order/{order_id}")
+    public Shipper affectOrderToShipper(@PathVariable Long shipper_id, @PathVariable Long order_id) throws ObjectNotFoundException {
+        return shipperService.affectOrderToShipper(shipper_id, order_id);
     }
 
-
+    @GetMapping
+    public List<Shipper> readAll(){return shipperService.readAll();}
 
 
 }
