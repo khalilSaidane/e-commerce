@@ -16,17 +16,20 @@ public class OrderDetailsService {
     }
 
     public OrderDetails read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(OrderDetails.class.getName(),id));
     }
 
     public OrderDetails create(OrderDetails orderDetails) {
         return repo.save(orderDetails);
     }
 
-    public OrderDetails update(Long id, OrderDetails newOrderDetails) throws ObjectNotFoundException {
-        OrderDetails orderDetails = read(id);
-        newOrderDetails.setId(id);
-        return repo.save(newOrderDetails);
+    public OrderDetails update(Long id, OrderDetails newOrderDetails) {
+        return repo.findById(id).map(orderDetails -> {
+            newOrderDetails.setId(id);
+            return repo.save(newOrderDetails);
+        }).orElse(
+                repo.save(newOrderDetails)
+        );
     }
 
     public List<OrderDetails> readAll() {

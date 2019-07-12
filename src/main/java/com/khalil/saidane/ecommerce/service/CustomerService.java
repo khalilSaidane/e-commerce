@@ -2,8 +2,10 @@ package com.khalil.saidane.ecommerce.service;
 
 import com.khalil.saidane.ecommerce.DAO.CustomerRepository;
 import com.khalil.saidane.ecommerce.entities.Customer;
+import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -12,22 +14,27 @@ public class CustomerService {
     private final CustomerRepository repo;
 
 
+
     public CustomerService(CustomerRepository customerRepository) {
         this.repo = customerRepository;
+
     }
 
     public Customer signUp(Customer customer) {
         return repo.save(customer);
     }
 
-    public Customer update(Long id, Customer newCustomer) throws ObjectNotFoundException {
-        Customer customer = read(id);
-        newCustomer.setId(id);
-        return repo.save(newCustomer);
+    public Customer update(Long id, Customer newCustomer)  {
+       return repo.findById(id).map(customer -> {
+           newCustomer.setId(id);
+           return repo.save(newCustomer);
+       }).orElse(
+               repo.save(newCustomer)
+       );
     }
 
     public Customer read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Customer.class.getName(),id));
     }
 
     public void delete(Long id) throws ObjectNotFoundException {
@@ -38,6 +45,8 @@ public class CustomerService {
     public List<Customer> readAll() {
         return repo.findAll();
     }
+
+
 
 
 }

@@ -20,7 +20,7 @@ public class ShipperService {
     }
 
     public Shipper read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Shipper.class.getName(),id));
     }
 
     public Shipper create(Shipper shipper) {
@@ -28,9 +28,12 @@ public class ShipperService {
     }
 
     public Shipper update(Long id, Shipper newShipper) throws ObjectNotFoundException {
-        Shipper shipper = read(id);
-        newShipper.setId(id);
-        return repo.save(newShipper);
+        return repo.findById(id).map(shipper -> {
+            newShipper.setId(id);
+            return repo.save(newShipper);
+        }).orElse(
+                repo.save(newShipper)
+        );
     }
 
     public void delete(Long id) throws ObjectNotFoundException {

@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +39,6 @@ public class Customer implements Serializable {
     private String shippingPostalCode;
     private String shippingCountry;
     @OneToMany(mappedBy = "customer")
-    private List<Order_> orders;
+    private List<Order_> orders = new ArrayList<>();
 
 }
