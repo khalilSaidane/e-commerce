@@ -12,11 +12,11 @@ import java.util.List;
 @RequestMapping("product-management")
 public class ProductController {
     @Autowired
-    private  ProductService productService;
+    private ProductService productService;
 
 
     @PostMapping
-    public Product create(@RequestBody Product product){
+    public Product create(@RequestBody Product product) {
         return productService.create(product);
     }
 
@@ -26,8 +26,8 @@ public class ProductController {
     }
 
     @PutMapping("{id}")
-    public Product update(@PathVariable Long id,@RequestBody Product updatedProduct){
-        return productService.update(id,updatedProduct);
+    public Product update(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        return productService.update(id, updatedProduct);
     }
 
     @DeleteMapping("{id}")
@@ -36,7 +36,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> readAll(){
+    public List<Product> readAll() {
         return productService.readAll();
     }
 

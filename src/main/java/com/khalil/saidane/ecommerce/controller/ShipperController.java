@@ -4,6 +4,7 @@ import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.entities.Shipper;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import com.khalil.saidane.ecommerce.service.ShipperService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("shipper-management")
 public class ShipperController {
-
-    private  ShipperService shipperService;
+    @Autowired
+    private ShipperService shipperService;
 
 
     @PostMapping
@@ -41,7 +42,9 @@ public class ShipperController {
     }
 
     @GetMapping
-    public List<Shipper> readAll(){return shipperService.readAll();}
+    public List<Shipper> readAll() {
+        return shipperService.readAll();
+    }
 
 
 }

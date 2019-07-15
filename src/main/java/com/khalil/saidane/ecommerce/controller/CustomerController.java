@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("customer-management")
 public class CustomerController {
     @Autowired
-    private  CustomerService customerService;
+    private CustomerService customerService;
 
 
     @PostMapping
@@ -39,7 +39,6 @@ public class CustomerController {
     public List<Customer> readAll() {
         return customerService.readAll();
     }
-
 
 
 }

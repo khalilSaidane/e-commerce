@@ -16,7 +16,7 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private  OrderService orderService;
+    private OrderService orderService;
 
 
     @GetMapping("/{id}")
@@ -40,14 +40,16 @@ public class OrderController {
     public void delete(@PathVariable Long id) throws ObjectNotFoundException {
         orderService.delete(id);
     }
+
     @GetMapping
-    public List<Order_> readAll(){return orderService.readAll();}
+    public List<Order_> readAll() {
+        return orderService.readAll();
+    }
 
     @PostMapping("customer/{customer_id}/order/{order_id}")
     public Order_ affectOrderToCustomer(@PathVariable Long customer_id, @PathVariable Long order_id) throws ObjectNotFoundException {
         return orderService.affectOrderToCustomer(customer_id, order_id);
     }
-
 
 
 }

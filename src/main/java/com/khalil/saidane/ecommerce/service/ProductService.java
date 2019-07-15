@@ -12,20 +12,18 @@ import java.util.List;
 @Service
 public class ProductService {
     @Autowired
-    private  ProductRepository repo;
-
-
+    private ProductRepository repo;
 
 
     public Product read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Product.class.getName(),id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Product.class.getName(), id));
     }
 
-    public Product create(Product product){
+    public Product create(Product product) {
         return repo.save(product);
     }
 
-    public Product update(Long id,Product updatedProduct){
+    public Product update(Long id, Product updatedProduct) {
         return repo.findById(id).map(product -> {
             updatedProduct.setId(id);
             return repo.save(updatedProduct);
@@ -39,7 +37,7 @@ public class ProductService {
         repo.delete(p);
     }
 
-    public List<Product> readAll(){
+    public List<Product> readAll() {
         return repo.findAll();
     }
 

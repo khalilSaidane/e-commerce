@@ -12,13 +12,13 @@ import java.util.List;
 @Service
 public class ShipperService {
     @Autowired
-    private  ShipperRepository repo;
+    private ShipperRepository repo;
     @Autowired
-    private  OrderService orderService;
+    private OrderService orderService;
 
 
     public Shipper read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Shipper.class.getName(),id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Shipper.class.getName(), id));
     }
 
     public Shipper create(Shipper shipper) {
@@ -46,5 +46,7 @@ public class ShipperService {
         return repo.save(shipper);
     }
 
-    public List<Shipper> readAll(){return repo.findAll();}
+    public List<Shipper> readAll() {
+        return repo.findAll();
+    }
 }

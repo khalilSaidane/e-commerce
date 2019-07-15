@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("category-management")
 public class CategoryController {
     @Autowired
-    private  CategoryService categoryService;
+    private CategoryService categoryService;
 
 
     @PostMapping
-    public Category create(@RequestBody Category category){
+    public Category create(@RequestBody Category category) {
         return categoryService.create(category);
     }
 
@@ -27,8 +27,8 @@ public class CategoryController {
     }
 
     @PutMapping("{id}")
-    public Category update(@PathVariable Long id,Category updatedCategory){
-        return categoryService.update(id,updatedCategory);
+    public Category update(@PathVariable Long id, Category updatedCategory) {
+        return categoryService.update(id, updatedCategory);
     }
 
     @DeleteMapping("{id}")
@@ -37,7 +37,7 @@ public class CategoryController {
     }
 
     @GetMapping
-    private List<Category> readAll(){
+    private List<Category> readAll() {
         return categoryService.readAll();
     }
 }

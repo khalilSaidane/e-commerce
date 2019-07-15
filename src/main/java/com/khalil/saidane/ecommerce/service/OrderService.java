@@ -13,14 +13,13 @@ import java.util.List;
 @Service
 public class OrderService {
     @Autowired
-    private  OrderRepository repo;
+    private OrderRepository repo;
     @Autowired
-    private  CustomerService customerService;
-
+    private CustomerService customerService;
 
 
     public Order_ read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Order_.class.getName(),id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Order_.class.getName(), id));
     }
 
     public Order_ create(Order_ order_) {
@@ -44,6 +43,7 @@ public class OrderService {
     public List<Order_> readAll() {
         return repo.findAll();
     }
+
     public Order_ affectOrderToCustomer(Long customer_id, Long order_id) throws ObjectNotFoundException {
         Customer c = customerService.read(customer_id);
         Order_ o = read(order_id);

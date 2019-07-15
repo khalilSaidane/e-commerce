@@ -12,8 +12,7 @@ import java.util.List;
 @RequestMapping("order-details-management")
 public class OrderDetailsController {
     @Autowired
-    private  OrderDetailsService orderDetailsService;
-
+    private OrderDetailsService orderDetailsService;
 
 
     @GetMapping("{id}")
@@ -30,8 +29,9 @@ public class OrderDetailsController {
     public OrderDetails update(@PathVariable Long id, @RequestBody OrderDetails updatedDetails) throws ObjectNotFoundException {
         return orderDetailsService.update(id, updatedDetails);
     }
+
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable  Long id) throws ObjectNotFoundException {
+    public void delete(@PathVariable Long id) throws ObjectNotFoundException {
         orderDetailsService.delete(id);
     }
 

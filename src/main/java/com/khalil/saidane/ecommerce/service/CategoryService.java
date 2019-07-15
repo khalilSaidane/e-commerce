@@ -12,33 +12,34 @@ import java.util.List;
 @Service
 public class CategoryService {
     @Autowired
-    private  CategoryRepository repo;
+    private CategoryRepository repo;
     @Autowired
-    private  ProductService productService;
-
+    private ProductService productService;
 
 
     public Category read(Long id) throws ObjectNotFoundException {
-        return repo.findById(id).orElseThrow(()-> new ObjectNotFoundException(Category.class.getName(),id));
+        return repo.findById(id).orElseThrow(() -> new ObjectNotFoundException(Category.class.getName(), id));
     }
 
-    public Category create(Category c){
+    public Category create(Category c) {
         return repo.save(c);
     }
 
-    public Category update(Long id,Category newCategory)  {
+    public Category update(Long id, Category newCategory) {
         return repo.findById(id).map(category -> {
-           newCategory.setId(id);
-           return repo.save(newCategory);
+            newCategory.setId(id);
+            return repo.save(newCategory);
         }).orElse(
                 repo.save(newCategory)
         );
     }
-    public void delete (Long id) throws ObjectNotFoundException {
+
+    public void delete(Long id) throws ObjectNotFoundException {
         Category c = read(id);
         repo.delete(c);
     }
-    public Category affectCategoryToProduct(Long category_id,Long product_id) throws ObjectNotFoundException {
+
+    public Category affectCategoryToProduct(Long category_id, Long product_id) throws ObjectNotFoundException {
         Category category = read(category_id);
         Product product = productService.read(product_id);
         category.setProduct(product);
