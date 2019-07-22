@@ -1,6 +1,7 @@
 package com.khalil.saidane.ecommerce.service;
 
 import com.khalil.saidane.ecommerce.DAO.PaymentRepository;
+import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.entities.Payment;
 import com.khalil.saidane.ecommerce.exeption.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import java.util.List;
 public class PaymentService {
     @Autowired
     private PaymentRepository repo;
+    @Autowired
+    private OrderService orderService;
 
     public Payment read(Long id) throws ObjectNotFoundException {
         return repo.findById(id).orElseThrow(()-> new ObjectNotFoundException(Payment.class.getName(),id));
@@ -36,6 +39,13 @@ public class PaymentService {
 
     public List<Payment> readAll(){
         return repo.findAll();
+    }
+
+    public Payment affectOrderToPayment(Long order_id,Long payment_id) throws ObjectNotFoundException {
+        Order_ o = orderService.read(order_id);
+        Payment p = read(payment_id);
+        p.setOrder_(o);
+        return repo.save(p);
     }
 
 }

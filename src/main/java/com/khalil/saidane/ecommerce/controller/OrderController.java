@@ -1,5 +1,6 @@
 package com.khalil.saidane.ecommerce.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khalil.saidane.ecommerce.entities.Customer;
 import com.khalil.saidane.ecommerce.entities.Order_;
 import com.khalil.saidane.ecommerce.entities.Shipper;
@@ -40,7 +41,6 @@ public class OrderController {
     public void delete(@PathVariable Long id) throws ObjectNotFoundException {
         orderService.delete(id);
     }
-
     @GetMapping
     public List<Order_> readAll() {
         return orderService.readAll();

@@ -1,26 +1,31 @@
 package com.khalil.saidane.ecommerce.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Data
-public class Order_ {
+public class Order_  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JsonIgnore
     private Customer customer;
     private int orderNumber;
     @OneToOne(mappedBy = "order_")
+    @JsonIgnore
     private Payment payment;
     private Date orderDate;
     private Date shipDate;
     private Date requiredDate;
+    @JsonIgnore
     @OneToOne(mappedBy = "order_")
     private Shipper shipper;
     private String freight;

@@ -38,4 +38,9 @@ public class PaymentController {
     public List<Payment> readAll(){
         return paymentService.readAll();
     }
+
+    @PostMapping("payment/{payment_id}/order/{order_id}")
+    public Payment affectOrderToPayment(@PathVariable Long order_id,@PathVariable Long payment_id) throws ObjectNotFoundException {
+        return paymentService.affectOrderToPayment(order_id,payment_id);
+    }
 }
