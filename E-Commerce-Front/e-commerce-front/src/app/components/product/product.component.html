@@ -1,2 +1,9 @@
-<h1>{{product.name}}</h1>
-<p>{{product.description}}</p>
+<div class="card">
+  <div *ngIf="product" class="card-body align-content-center">
+    <img [src]="product.imgUrl" style="width:100%">
+    <h1>{{product.name}}</h1>
+    <p class="price">{{product.unitPrice | currency}}</p>
+    <p class="small">{{product.description}}</p>
+    <p><button>Add to Cart</button></p>
+  </div>
+</div>

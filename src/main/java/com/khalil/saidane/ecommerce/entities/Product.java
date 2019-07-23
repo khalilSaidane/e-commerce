@@ -12,6 +12,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(columnDefinition="TEXT")
     private String description;
     @OneToMany(mappedBy = "product")
     private List<Category> categories;
@@ -25,6 +26,7 @@ public class Product {
     private float unitWeight;
     private int unitsInStock;
     private int unitOnOrder;
+    private String imgUrl;
     @ManyToOne
     private OrderDetails orderDetails;
     @ManyToOne

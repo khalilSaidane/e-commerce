@@ -1,14 +1,28 @@
+import {OrderDetails} from './OrderDetails';
+import {Customer} from './Customer';
+import {Payment} from './Payment';
+import {Shipper} from './Shipper';
+
 export interface Order {
   id: number;
-  // customer: Customer;
-  // orderNumber: number;
-  // payment: Payment;
-  // orderDate: Date;
-  // shipDate: Date;
-  // requiredDate: Date;
-  // shipper: Shipper;
-  // freight: number;
-
+  customer: Customer;
+  orderNumber: number;
+  payment: Payment;
+  orderDate: Date;
+  shipDate: Date;
+  requiredDate: Date;
+  shipper: Shipper;
+  freight: number;
+  saleTax: number;
+  timeStamp: Date;
+  transactStatus: number;
+  errorLoc: string;
+  errorMsg: string;
+  isFulfilled: number;
+  isDeleted: number;
+  isPayed: number;
+  paymentDate: Date;
+  orderDetails: OrderDetails;
 }
 // @Id
 // @GeneratedValue(strategy = GenerationType.IDENTITY)

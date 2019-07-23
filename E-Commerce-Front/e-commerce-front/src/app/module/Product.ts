@@ -1,5 +1,6 @@
 import {Category} from './Category';
 import {OrderDetails} from './OrderDetails';
+import {Supplier} from './Supplier';
 
 export interface Product {
   id: number;
@@ -16,5 +17,7 @@ export interface Product {
   unitWeight?: number;
   unitsInStock?: number;
   unitOnOrder?: number;
+  imgUrl?: string;
   orderDetails?: OrderDetails;
+  supplier: Supplier;
 }
