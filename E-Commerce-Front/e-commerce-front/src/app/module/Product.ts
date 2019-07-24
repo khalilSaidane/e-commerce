@@ -19,5 +19,5 @@ export interface Product {
   unitOnOrder?: number;
   imgUrl?: string;
   orderDetails?: OrderDetails;
-  supplier: Supplier;
+  supplier?: Supplier;
 }

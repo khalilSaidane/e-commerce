@@ -1,14 +1,17 @@
-<div class="card" (mouseenter)="isMouseIn = !isMouseIn"
+<div  *ngIf="product" class="card" (mouseenter)="isMouseIn = !isMouseIn"
      (mouseleave)="isMouseIn =! isMouseIn"
-     [style.border-color]="product.discount? 'azure': ''"
+      [style.border-color]="product.discount? 'azure' : ''"
 >
-  <div *ngIf="product"  class="card-body align-content-center">
+  <div class="card-body align-content-center">
+    <a routerLink="product/{{product.id}}">
     <div class="container">
       <img [src]="product.imgUrl" style="width:100%">
       <button class="btn" *ngIf="isMouseIn">Quick look</button>
     </div>
+    </a>
     <h1>{{product.name}}</h1>
-      <label class="price"  *ngIf="product.discount"> {{product.discount | currency}} </label>
-      <label class="price" [ngStyle]="setDiscountStyle()">{{product.unitPrice | currency}}</label>
+    <i class="fa-box"></i>
+    <label class="price"  *ngIf="product.discount"> {{product.discount | currency}} </label>
+    <label class="price" [ngStyle]="setDiscountStyle()">{{product.unitPrice | currency}}</label>
 </div>
 </div>

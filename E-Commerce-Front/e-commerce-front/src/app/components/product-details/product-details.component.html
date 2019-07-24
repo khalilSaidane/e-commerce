@@ -1,1 +1,23 @@
-<p>product-details works!</p>
+<div class="card m-3" style="border-color: silver" *ngIf="product">
+  <div class="row">
+    <div class="col">
+      <img [src]="product.imgUrl">
+    </div>
+    <div class="col">
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <a *ngFor="let color of availableColors">
+        <i class="fa fa-circle ml-2 fa-3x" style.color="{{color}}"></i></a>
+      <br>
+      <br>
+      <select  class="custom-select-sm">
+        <option  disabled>size</option>
+        <option *ngFor="let size of availableSizes" value={{size}}>{{size}}</option>
+      </select>
+      <br>
+      <br>
+      <label class="price"  *ngIf="product.discount"> {{product.discount | currency}} </label>
+      <label class="price" [ngStyle]="setDiscountStyle()">{{product.unitPrice | currency}}</label>
+    </div>
+  </div>
+</div>

@@ -12,8 +12,8 @@ export class ProductService {
     headers: new HttpHeaders({'Content-type': 'application/json'})
   };
   constructor(private http: HttpClient) { }
-  getProduct(id: number): Observable<any> {
+  getProduct(id: number): Observable<Product> {
     const url = `${this.productUrl}/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<Product>(url);
   }
 }
