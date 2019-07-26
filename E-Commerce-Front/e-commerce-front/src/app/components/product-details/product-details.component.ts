@@ -27,18 +27,9 @@ export class ProductDetailsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(id).subscribe((p) => {
       this.product = p;
-      this.availableColors = p.availableColors.split(',');
-      this.availableSizes = p.availableSize.split(',');
+      if (this.product.availableColors != null) { this.availableColors = p.availableColors.split(','); }
+      if (this.product.availableSize != null) { this.availableSizes = p.availableSize.split(','); }
     });
-  }
-
-  setDiscountStyle() {
-    const styles = {
-      color: this.product.discount ? 'gray' : '',
-      'text-decoration': this.product.discount ? 'line-through' : '',
-      'font-size': this.product.discount ? '14px' : ''
-    };
-    return styles;
   }
 
 }

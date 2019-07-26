@@ -1,0 +1,15 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.buy{
+  width: 260px;
+  height: 30px;
+  background-color: lightsalmon;
+  border-color: midnightblue;
+  font-style: oblique;
+}
+.price {
+  color: black;
+  font-size: 22px;
+  margin: 5px;
+}

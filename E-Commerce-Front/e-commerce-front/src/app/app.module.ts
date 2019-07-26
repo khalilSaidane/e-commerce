@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {ProductService} from './services/product.service';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { IndexComponent } from './components/index/index.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { IndexComponent } from './components/index/index.component';
     NavbarComponent,
     ProductComponent,
     ProductDetailsComponent,
-    IndexComponent
+    IndexComponent,
+    ProductListComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,

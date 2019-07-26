@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand navbar-dark bg-primary mb-4">
   <div class="container">
-    <a routerLink="/" class="navbar-brand">ECOM</a>
+    <a routerLink="/" class="navbar-brand" style="color: floralwhite">ECOM</a>
     <div>
       <ul class="navbar-nav ml-auto">
         <li  class="nav-item"
              [routerLinkActive]="['active']"
              [routerLinkActiveOptions]="{exact: true}"
         >
-          <a href="#" class="nav-link">Browse</a>
+          <a routerLink="products" class="nav-link">Browse</a>
         </li>
         <li class="nav-item"
             [routerLinkActive]="['active']"

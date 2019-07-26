@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit , Input} from '@angular/core';
 import {Product} from '../../module/Product';
-import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -8,14 +7,11 @@ import {ProductService} from '../../services/product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  product: Product ;
+  @Input() product: Product ;
   isMouseIn = false;
-  constructor(private productService: ProductService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.productService.getProduct(1).subscribe(p => {
-      this.product = p;
-    });
   }
 
   setDiscountStyle() {

@@ -1,0 +1,24 @@
+
+<div class="card m-5" style="border-color: lightgray ; border-width: thick;">
+  <div class="card-body">
+    <form>
+      Qty: <input type="number" [max]="product.unitsInStock" [min]=1 [disabled]="product.unitsInStock == 0"
+    >
+      <label class="price float-right m-auto" [ngStyle]="setDiscountStyle()" >{{product.unitPrice | currency}}</label>
+      <label class="price float-right m-auto"  *ngIf="product.discount"> {{product.discount | currency}} </label>
+      <br>
+      <div>
+        <label *ngIf="product.unitsInStock > 0" class="text-success">In Stock</label>
+        <label *ngIf="product.unitsInStock == 0" class="text-danger ">Out Of Stock</label>
+      </div>
+      <button type="submit" class="m-2 buy" [disabled]="product.unitsInStock == 0">
+        <i class="fa fa-shopping-cart mr-2" style="color: white"></i>
+        Add To Cart
+      </button><br>
+      <button type="submit"  class="m-2 buy" [disabled]="product.unitsInStock == 0">
+        <i class="fa fa-play mr-2" style="color: white"></i>
+        Buy Now
+      </button>
+    </form>
+  </div>
+</div>

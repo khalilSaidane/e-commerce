@@ -1,6 +1,7 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  width: 300px;
+  height: 500px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -12,8 +13,8 @@
 }
 .container {
   position: relative;
-  width: 100%;
-  max-width: 400px;
+  width: 200px;
+  height: 200px;
 }
 
 .container img {
@@ -36,5 +37,4 @@
   border-radius: 5px;
   text-align: center;
 }
-
 

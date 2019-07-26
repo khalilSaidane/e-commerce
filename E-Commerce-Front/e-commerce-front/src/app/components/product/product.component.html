@@ -1,6 +1,6 @@
-<div  *ngIf="product" class="card" (mouseenter)="isMouseIn = !isMouseIn"
+<div  *ngIf="product" class="card m-3 align-content-center" (mouseenter)="isMouseIn = !isMouseIn"
      (mouseleave)="isMouseIn =! isMouseIn"
-      [style.border-color]="product.discount? 'azure' : ''"
+      [style.border-color]="product.discount? 'silver' : ''"
 >
   <div class="card-body align-content-center">
     <a routerLink="product/{{product.id}}">
@@ -11,7 +11,7 @@
     </a>
     <h1>{{product.name}}</h1>
     <i class="fa-box"></i>
-    <label class="price"  *ngIf="product.discount"> {{product.discount | currency}} </label>
-    <label class="price" [ngStyle]="setDiscountStyle()">{{product.unitPrice | currency}}</label>
+    <label class="price flex-column"  *ngIf="product.discount"> {{product.discount | currency}} </label>
+    <label class="price align-bottom" [ngStyle]="setDiscountStyle()">{{product.unitPrice | currency}}</label>
 </div>
 </div>
