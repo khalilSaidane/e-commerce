@@ -57,6 +57,12 @@ public class CustomerService implements UserDetailsService {
         return repo.findAll();
     }
 
+    public Customer getCustomerByEmail(String email){
+        Customer customer =  repo.findCustomerByEmail(email);
+        if(customer == null ) throw new UsernameNotFoundException(email);
+        return customer;
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

@@ -3,7 +3,10 @@ package com.khalil.saidane.ecommerce.security;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.khalil.saidane.ecommerce.SpringApplicationContext;
+import com.khalil.saidane.ecommerce.entities.Customer;
 import com.khalil.saidane.ecommerce.model.request.UserLoginRequest;
+import com.khalil.saidane.ecommerce.service.CustomerService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
@@ -13,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -61,8 +65,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                  .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
                  .signWith(SignatureAlgorithm.HS512 ,SecurityConstants.TOKEN_SECRET)
                  .compact();
+        CustomerService customerService = (CustomerService) SpringApplicationContext.getBean("customerService");
+        Customer customer = customerService.getCustomerByEmail(userName);
 
          response.addHeader(SecurityConstants.HEADER_STRING , SecurityConstants.TOKEN_PREFIX + token);
-
+         response.addHeader("userID",customer.getId().toString());
     }
 }
